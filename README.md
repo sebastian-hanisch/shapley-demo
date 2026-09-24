@@ -1,5 +1,7 @@
 # 🤝 Shapley-Wert – wie Spediteure die Kosten einer gemeinsamen Tour fair teilen
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-shapley-demo.streamlit.app/)**
+
 Siebtes Stück der **Spieltheorie-&-Mechanism-Design-Linie** der "Konzepte"-Reihe im Portfolio von
 [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning, und **Wurzel des zweiten Astes (kooperative Spieltheorie)**. Die bisherigen Stücke
 ([nash-demo](https://sebastianhanisch-nash-demo.streamlit.app/) bis [stackelberg-demo](https://sebastianhanisch-stackelberg-demo.streamlit.app/)) betrachteten eigennützige Lkw;
