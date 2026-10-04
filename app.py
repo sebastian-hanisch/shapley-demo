@@ -139,7 +139,7 @@ if ok_s:
     st.success(f"✅ Der Shapley-Wert ist stabil: keine der {2 ** n - 1} Koalitionen käme allein günstiger. Er erfüllt die Shapley-Axiome und liegt im Kern.")
 else:
     st.warning(f"⚠️ Der Shapley-Wert ist hier nicht stabil: {names_of(mask_s, n)} zahlen zusammen {de(ex_s, 2)} km mehr, als sie allein führen ({block_s} blockierende "
-               f"Koalition{'en' if block_s != 1 else ''}). Der Shapley-Wert ist fair im Sinne seiner Axiome, aber nicht immer im Sinne des Kerns - das nächste Stück der Linie.")
+               f"Koalition{'en' if block_s != 1 else ''}). Der Shapley-Wert ist fair im Sinne seiner Axiome, aber nicht immer im Sinne des Kerns - das behandelt das achte Stück der Linie, kern-demo.")
 
 st.markdown("---")
 
@@ -242,9 +242,9 @@ st.markdown(
     """
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
-| **Jeder Spediteur hat genau einen Stopp und es gibt keine Kapazität** | Mit Kapazitäten und mehreren Stopps je Spediteur ist der Koalitionswert ein Tourenplanungsproblem (VRP) und die Superadditivität gilt nicht mehr automatisch. | [VRP-Demos](https://sebastianhanisch.net/demos.html) |
+| **Jeder Spediteur hat genau einen Stopp und es gibt keine Kapazität** | Mit Kapazitäten und mehreren Stopps je Spediteur ist der Koalitionswert ein Tourenplanungsproblem (VRP) und die Subadditivität der Kosten (Kooperation lohnt) gilt nicht mehr automatisch. | [VRP-Demos](https://sebastianhanisch.net/demos.html) |
 | **Die Kosten einer Koalition sind die kürzeste Rundtour** | In der Praxis kommen Zeitfenster, Beladung und Fahrerzeiten dazu; jeder Koalitionswert wird zu einem schweren Optimierungsproblem. Held-Karp trägt nur bis etwa 15 Stopps. | Stichprobe (siehe Experiment) |
-| **Shapley ist die gerechte Aufteilung** | Shapley erfüllt vier Axiome, aber nicht immer die Stabilitätsbedingung des Kerns (Experiment oben). Wer beides verlangt, braucht den Kern und ggf. den Nukleolus. | **Kern und Nukleolus** (nächstes Stück) |
+| **Shapley ist die gerechte Aufteilung** | Shapley erfüllt vier Axiome, aber nicht immer die Stabilitätsbedingung des Kerns (Experiment oben). Wer beides verlangt, braucht den Kern und ggf. den Nukleolus. | **Kern und Nukleolus** (kern-demo, achtes Stück) |
 | **Alle Spediteure wollen kooperieren** | Der Wert der Kooperation hängt von den Koalitionen ab, die sich stattdessen bilden könnten; Verhandlung und Vertrauen liegen außerhalb dieses Modells. | - |
 | **Die Kostenaufteilung wird von außen gesetzt** | Ob Spediteure ihre Kosten ehrlich melden, ist eine Frage des Mechanism Designs. | Kostenteilung mit Anreizen (Moulin-Shenker) |
 """

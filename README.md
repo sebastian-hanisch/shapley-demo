@@ -39,7 +39,7 @@ Alleinfahrt und **gleiche Ersparnis** für alle.
 | Wie viel spart die gemeinsame Tour? | Standardinstanz (8 Spediteure, Seed 35): alle allein 797,9 km, gemeinsam 328,7 km – 58,8 % Ersparnis. Im Mittel 55 % (gleichmäßig verteilte Stopps) bzw. 68 % (zwei Ballungszentren) bei 8 Spediteuren. | `test_standardfall_numbers`, `test_stability_experiment_numbers` |
 | Ist der Shapley-Wert stabil? | Meist: bei 8 Spediteuren liegt er in 85 % (gleichmäßig) bzw. 92 % (Ballung) von je 60 Instanzen im Kern. Wo er es nicht ist, ist die Überschreitung klein: im Mittel über alle Instanzen 0,1 % der Gesamtstrecke, im Einzelfall höchstens 2,2 %. Blockierende Koalitionen: im Mittel 0,2 je Instanz. | `test_stability_experiment_numbers` |
 | Sind die naheliegenden Aufteilungen stabil? | Kaum: die proportionale Aufteilung liegt nur in 10 % (gleichmäßig) bzw. 27 % (Ballung) der Instanzen im Kern, die gleiche Ersparnis für alle in keiner. Blockierende Koalitionen im Mittel 5,5 bzw. 14,4 je Instanz (gleichmäßig). Das sagt nur etwas über diese Vehikelfamilie. | dito |
-| Ein Beispiel, in dem Shapley nicht im Kern liegt | Vehikel Seed 12 (8 Spediteure): die Spediteure 1 bis 7 zahlen zusammen 2,95 km mehr, als sie allein führen; gemeinsam sind es 310,4 km. Ob der Kern selbst leer ist, klärt das nächste Stück. | `test_shapley_nicht_im_kern_numbers` |
+| Ein Beispiel, in dem Shapley nicht im Kern liegt | Vehikel Seed 12 (8 Spediteure): die Spediteure 1 bis 7 zahlen zusammen 2,95 km mehr, als sie allein führen; gemeinsam sind es 310,4 km. Ob der Kern selbst leer ist, klärt das achte Stück der Linie (kern-demo). | `test_shapley_nicht_im_kern_numbers` |
 | Bleibt das bei mehr Spediteuren so? | Nein: bei 4 Spediteuren ist der Shapley-Wert in 100 % der (gleichmäßig verteilten) Instanzen stabil, bei 10 in 80 %; die proportionale Aufteilung fällt von 42 % auf 5 %. Die Ersparnis wächst von 34 % auf 61 %. | `test_scaling_experiment_numbers` |
 | Geht es ohne alle Reihenfolgen? | Stichprobe bei 10 Spediteuren (1 024 Koalitionen gegen 3 628 800 Reihenfolgen): mit 10 zufälligen Reihenfolgen liegt der relative Fehler im Mittel bei 19 %, mit 100 bei 6,1 %, mit 1000 bei 2,0 % (etwa $1/\sqrt K$). Die Stabilitätsaussage kippt bei 10 Reihenfolgen in 14 % der Läufe, bei 100 in 1,0 %, bei 1000 in keinem. | `test_sampling_experiment_numbers` |
 | Handrechnung | Drei Spediteure der Standardinstanz (Seed 35): Shapley-Anteile 17,9 / 123,7 / 113,7 km von zusammen 255,4 km (10,9 % Ersparnis), alle 6 Reihenfolgen und Koalitionswerte in einer Tabelle. | `test_drei_spediteure_numbers` |
@@ -48,9 +48,9 @@ Alleinfahrt und **gleiche Ersparnis** für alle.
 
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
-| **Jeder Spediteur hat genau einen Stopp und es gibt keine Kapazität** | Mit Kapazitäten und mehreren Stopps je Spediteur ist der Koalitionswert ein Tourenplanungsproblem (VRP) und die Superadditivität gilt nicht mehr automatisch. | [VRP-Demos](https://sebastianhanisch.net/demos.html) |
+| **Jeder Spediteur hat genau einen Stopp und es gibt keine Kapazität** | Mit Kapazitäten und mehreren Stopps je Spediteur ist der Koalitionswert ein Tourenplanungsproblem (VRP) und die Subadditivität der Kosten (Kooperation lohnt) gilt nicht mehr automatisch. | [VRP-Demos](https://sebastianhanisch.net/demos.html) |
 | **Die Kosten einer Koalition sind die kürzeste Rundtour** | In der Praxis kommen Zeitfenster, Beladung und Fahrerzeiten dazu; jeder Koalitionswert wird ein schweres Optimierungsproblem. Held-Karp trägt nur bis etwa 15 Stopps. | Stichprobe (siehe oben) |
-| **Shapley ist die gerechte Aufteilung** | Shapley erfüllt vier Axiome, aber nicht immer die Stabilitätsbedingung des Kerns. | Kern und Nukleolus (nächstes Stück) |
+| **Shapley ist die gerechte Aufteilung** | Shapley erfüllt vier Axiome, aber nicht immer die Stabilitätsbedingung des Kerns. | Kern und Nukleolus (kern-demo, achtes Stück) |
 | **Alle Spediteure wollen kooperieren** | Der Wert der Kooperation hängt von den Koalitionen ab, die sich stattdessen bilden könnten; Verhandlung und Vertrauen liegen außerhalb dieses Modells. | – |
 | **Die Kostenaufteilung wird von außen gesetzt** | Ob Spediteure ihre Kosten ehrlich melden, ist eine Frage des Mechanism Designs. | Kostenteilung mit Anreizen |
 
@@ -60,7 +60,7 @@ Verwandt: [maut-demo](https://sebastianhanisch-maut-demo.streamlit.app/) (Preise
 
 ## Tests
 
-Pytest-Suite (`pytest tests/ -v`): Held-Karp gegen Brute-Force (jede Koalition), rekonstruierte Tour hat die optimale Länge, Superadditivität, Shapley per Handrechnung (3 Spieler) und gegen die Permutations-Definition,
+Pytest-Suite (`pytest tests/ -v`): Held-Karp gegen Brute-Force (jede Koalition), rekonstruierte Tour hat die optimale Länge, Subadditivität der Kosten, Shapley per Handrechnung (3 Spieler) und gegen die Permutations-Definition,
 alle vier Axiome, Kern-Prüfung und blockierende Koalitionen gegen eine Schleife, Kern per Handrechnung, Vergleichs-Aufteilungen per Handrechnung, Stichprobe (reproduzierbar, konvergent), Vehikel
 (Reproduzierbarkeit, Metrik, Ballung), AppTest-Rauchtests (jedes Preset, Handrechnung-Auswahl, Permalink-Grenzen, drei Experimente auf Abruf) und `test_claims.py` (jede Zahl aus diesem README).
 
@@ -78,7 +78,7 @@ alle vier Axiome, Kern-Prüfung und blockierende Koalitionen gegen eine Schleife
 
 ## Bewusst nicht umgesetzt
 
-- Der Kern selbst (LP), seine Leere und der Nukleolus: nächstes Stück der Linie.
+- Der Kern selbst (LP), seine Leere und der Nukleolus: achtes Stück der Linie (kern-demo).
 - Mehr als 12 Spediteure (Held-Karp in Python) und Kapazitäten/Mehr-Stopp-Spediteure.
 - Ein PDF-Export – wie bei den anderen Konzepte-Demos dieses Portfolios nicht Teil der Linie.
 

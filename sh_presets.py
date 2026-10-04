@@ -104,6 +104,6 @@ PRESET_HELP = {
     "Zwei Ballungszentren": "Stopps in zwei Ballungszentren: gemeinsam 152,0 statt 338,4 km. Hier ist nur der Shapley-Wert stabil, die proportionale Aufteilung überschreitet eine Koalition um 26,2 km.",
     "Sechs Spediteure": "6 Spediteure: 311,2 statt 562,7 km (44,7 % Ersparnis). Nur der Shapley-Wert liegt im Kern; proportional überschreitet eine Koalition um 18,5 km, gleiche Ersparnis um 30,8 km.",
     "Zehn Spediteure": "10 Spediteure: 362,4 statt 974,5 km (62,8 % Ersparnis), 1 023 Koalitionen. Shapley und proportional sind stabil, die gleiche Ersparnis nicht.",
-    "Shapley nicht im Kern": "Ein Vehikel, in dem der Shapley-Wert eine Koalition benachteiligt: die Spediteure 1 bis 7 könnten allein 2,95 km günstiger fahren als mit der Shapley-Aufteilung. Der Shapley-Wert liegt hier außerhalb des Kerns; ob der Kern selbst leer ist, klärt das nächste Stück.",
+    "Shapley nicht im Kern": "Ein Vehikel, in dem der Shapley-Wert eine Koalition benachteiligt: die Spediteure 1 bis 7 könnten allein 2,95 km günstiger fahren als mit der Shapley-Aufteilung. Der Shapley-Wert liegt hier außerhalb des Kerns; ob der Kern selbst leer ist, klärt das achte Stück der Linie (kern-demo).",
     "Drei Spediteure (Handrechnung)": "Nur drei Spediteure: alle 7 Koalitionswerte und die 6 Reihenfolgen passen in eine Tabelle - der Shapley-Wert lässt sich von Hand nachrechnen (17,9 / 123,7 / 113,7 km).",
 }

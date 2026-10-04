@@ -59,7 +59,7 @@ def test_reconstructed_tour_has_the_optimal_length():
 
 
 def test_cooperation_never_costs_more_than_going_apart():
-    """Dreiecksungleichung -> c(S u T) <= c(S) + c(T) für disjunkte S, T (Superadditivität der Ersparnis)."""
+    """Dreiecksungleichung -> c(S u T) <= c(S) + c(T) für disjunkte S, T (Subadditivität der Kosten, Superadditivität der Ersparnis)."""
     inst = S.generate(8, "uniform", 9)
     c, _, _ = G.tsp_values(inst.dist())
     full = 1 << 8
