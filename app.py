@@ -58,6 +58,19 @@ Kooperation beitreten. Die Demo berechnet ihn exakt (mit dem optimalen Tourwert 
 allein besser stellen würde.
 """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/shapley-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Mehrere Spediteure beliefern je einen Kunden ab demselben Depot. Fahren sie **gemeinsam eine Tour**, ist die Strecke kürzer als die Summe der Alleinfahrten. Offen ist, wie die gemeinsamen Kosten verteilt werden. Der **Shapley-Wert** lässt jeden Spediteur den Durchschnitt seiner Mehrkosten über alle Reihenfolgen zahlen, in denen die Spediteure der Tour beitreten.
+
+Die Demo vergleicht ihn mit zwei einfacheren Regeln und prüft, ob die Aufteilung **stabil** ist, ob also keine Gruppe allein günstiger führe. Der Shapley-Wert erfüllt vier Fairnessforderungen, ist aber nicht in jeder Instanz stabil. Die Aussagen gelten für das Modell der Demo, nicht für echte Spediteure.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/shapley-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 st.caption(
     "Siebtes Stück der Linie \"Spieltheorie & Mechanism Design\" der \"Konzepte\"-Reihe und Wurzel des zweiten Astes (kooperative Spieltheorie): die bisherigen Stücke betrachteten eigennützige Lkw, hier "
     "schließen sich Spediteure freiwillig zusammen. Die Kosten der gemeinsamen Tour sind der Tourwert einer Koalition; wer wie viel zahlt, ist die eigentliche Frage."
@@ -257,6 +270,25 @@ st.caption(
 st.markdown("---")
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/shapley-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben sind $n$ Spediteure mit je einem Kunden und die Kosten $c(S)$ der kürzesten gemeinsamen Rundtour jeder Gruppe $S$. Gesucht ist eine Aufteilung der Gesamtkosten $c(N)$ auf die Spediteure und die Antwort, ob keine Gruppe allein günstiger führe.
+
+| Symbol | Bedeutung |
+|---|---|
+| $N$, $n$ | Menge bzw. Zahl der Spediteure |
+| $S$ | eine Gruppe (Koalition) von Spediteuren, $S \subseteq N$ |
+| $c(S)$ | Länge der kürzesten Rundtour ab Depot durch alle Stopps der Gruppe $S$; $c(\emptyset) = 0$ |
+| $\phi_i$ | Shapley-Anteil von Spediteur $i$ |
+| $x_i$ | Anteil von Spediteur $i$ in einer beliebigen Aufteilung |
+| $d(S, j)$ | kürzester Weg vom Depot durch genau die Stopps in $S$ mit Ende bei $j$ |
+| $K$, $P_i^k$ | Zahl der zufälligen Reihenfolgen bzw. die Vorgänger von $i$ in der $k$-ten Reihenfolge |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/shapley-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **Kostenspiel.** Spediteure $N = \{1,\dots,n\}$, Koalitionswert $c(S)$ = Länge der kürzesten Rundtour ab Depot durch alle Stopps in $S$, $c(\emptyset) = 0$ (Traveling-Salesman-Spiel, Potters/Curiel/Tijs 1992).
