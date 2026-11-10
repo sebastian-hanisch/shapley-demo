@@ -256,7 +256,7 @@ st.markdown(
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
 | **Jeder Spediteur hat genau einen Stopp und es gibt keine Kapazität** | Mit Kapazitäten und mehreren Stopps je Spediteur ist der Koalitionswert ein Tourenplanungsproblem (VRP) und die Subadditivität der Kosten (Kooperation lohnt) gilt nicht mehr automatisch. | [VRP-Demos](https://sebastianhanisch.net/demos.html) |
-| **Die Kosten einer Koalition sind die kürzeste Rundtour** | In der Praxis kommen Zeitfenster, Beladung und Fahrerzeiten dazu; jeder Koalitionswert wird zu einem schweren Optimierungsproblem. Held-Karp trägt nur bis etwa 15 Stopps. | Stichprobe (siehe Experiment) |
+| **Die Kosten einer Koalition sind die kürzeste Rundtour** | In der Praxis kommen Zeitfenster, Beladung und Fahrerzeiten dazu; jeder Koalitionswert wird zu einem schweren Optimierungsproblem. Held-Karp reicht nur bis etwa 15 Stopps. | Stichprobe (siehe Experiment) |
 | **Shapley ist die gerechte Aufteilung** | Shapley erfüllt vier Axiome, aber nicht immer die Stabilitätsbedingung des Kerns (Experiment oben). Wer beides verlangt, braucht den Kern und ggf. den Nukleolus. | **Kern und Nukleolus** (kern-demo, achtes Stück) |
 | **Alle Spediteure wollen kooperieren** | Der Wert der Kooperation hängt von den Koalitionen ab, die sich stattdessen bilden könnten; Verhandlung und Vertrauen liegen außerhalb dieses Modells. | - |
 | **Die Kostenaufteilung wird von außen gesetzt** | Ob Spediteure ihre Kosten ehrlich melden, ist eine Frage des Mechanism Designs. | Kostenteilung mit Anreizen (Moulin-Shenker) |
